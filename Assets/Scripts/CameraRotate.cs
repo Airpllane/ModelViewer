@@ -21,7 +21,7 @@ public class CameraRotate : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             angleX += Input.GetAxis("Mouse X") * rotationSpeedX * Time.deltaTime;
-            angleY += Input.GetAxis("Mouse Y") * rotationSpeedY * Time.deltaTime;
+            angleY -= Input.GetAxis("Mouse Y") * rotationSpeedY * Time.deltaTime;
 
             angleY = Mathf.Clamp(angleY, angleYClamp.x, angleYClamp.y);
 
