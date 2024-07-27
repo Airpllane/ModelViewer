@@ -11,26 +11,20 @@ public class Model : ScriptableObject
 
     public ModelPrefab modelPrefab;
 
-    public void RenderModel()
-    {
-        Instantiate(modelPrefab).Slice();
-    }
-}
+    public ModelPrefab instantiatedPrefab;
 
-public interface Ability
-{
-    public void Activate(ModelPrefab modelPrefab);
-    public void Deactivate(ModelPrefab modelPrefab);
-}
-
-public class SliceAbility : Ability
-{
-    public void Activate(ModelPrefab modelPrefab)
+    public ModelPrefab RenderModelAt(Transform transform)
     {
-        modelPrefab.Slice();
+        instantiatedPrefab = Instantiate(modelPrefab, transform);
+        foreach(Ability ability in modelAbilities)
+        {
+            ability.modelPrefab = instantiatedPrefab;
+        }
+        return instantiatedPrefab;
     }
-    public void Deactivate(ModelPrefab modelPrefab)
+
+    public void UnrenderModel()
     {
-        modelPrefab.Unslice();
+        if (instantiatedPrefab) Destroy(instantiatedPrefab.gameObject);
     }
 }

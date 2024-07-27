@@ -7,16 +7,7 @@ public class ModelPrefab : MonoBehaviour
     public List<GameObject> underlayComponents;
     public List<GameObject> overlayComponents;
     public Animator animator;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Decompose()
     {
         animator.SetBool("Decomposed", true);

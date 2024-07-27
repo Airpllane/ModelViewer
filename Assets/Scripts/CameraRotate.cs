@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraRotate : MonoBehaviour
 {
@@ -18,7 +19,12 @@ public class CameraRotate : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        RotateCamera();
+    }
+
+    void RotateCamera()
+    {
+        if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             angleX += Input.GetAxis("Mouse X") * rotationSpeedX * Time.deltaTime;
             angleY -= Input.GetAxis("Mouse Y") * rotationSpeedY * Time.deltaTime;
@@ -31,7 +37,7 @@ public class CameraRotate : MonoBehaviour
                 angleX += 360.0f;
 
         }
-        else if (Input.GetMouseButton(1))
+        else if (Input.GetMouseButton(1) && !EventSystem.current.IsPointerOverGameObject())
         {
             distance += Input.GetAxis("Mouse X") * zoomSpeed * Time.deltaTime;
             distance = Mathf.Clamp(distance, minDistance, maxDistance);
