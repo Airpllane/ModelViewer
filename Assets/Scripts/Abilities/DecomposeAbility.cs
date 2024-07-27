@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DecomposeAbility : Ability
 {
+    public Animator animator;
     public override void Activate()
     {
-        modelPrefab.Decompose();
+        animator.SetBool("Decomposed", true);
     }
     public override void Deactivate()
     {
-        modelPrefab.Recompose();
+        animator.SetBool("Decomposed", false);
     }
     public DecomposeAbility() : base()
     {

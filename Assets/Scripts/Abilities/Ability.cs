@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public abstract class Ability : ScriptableObject
+public abstract class Ability : MonoBehaviour
 {
-    public ModelPrefab modelPrefab;
     public string abilityName;
     public abstract void Activate();
     public abstract void Deactivate();

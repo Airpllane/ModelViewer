@@ -24,21 +24,21 @@ public class ModelPresenter : MonoBehaviour
         nameLabel.text = model.modelName;
         descriptionLabel.text = model.modelDescription;
 
-        foreach(Ability ability in model.modelAbilities)
+        renderedModel = Instantiate(model.modelTemplate, modelContainer.transform);
+
+        foreach (Ability ability in renderedModel.modelAbilities)
         {
             AbilityButtonPresenter buttonPresenter = Instantiate(abilityButtonPresenter, abilityView);
             buttonPresenter.InjectModel(ability);
             abilityButtons.Add(buttonPresenter);
         }
-
-        renderedModel = model.RenderModelAt(modelContainer.transform);
     }
 
     public void RemoveModel()
     {
         if (this.model)
         {
-            this.model.UnrenderModel();
+            if (renderedModel) Destroy(renderedModel.gameObject);
             foreach (AbilityButtonPresenter abilityButton in abilityButtons)
             {
                 Destroy(abilityButton.gameObject);
