@@ -31,7 +31,7 @@ public class ModelPresenter : MonoBehaviour
             abilityButtons.Add(buttonPresenter);
         }
 
-        DisplayModel();
+        renderedModel = model.RenderModelAt(modelContainer.transform);
     }
 
     public void RemoveModel()
@@ -46,11 +46,7 @@ public class ModelPresenter : MonoBehaviour
             abilityButtons = new List<AbilityButtonPresenter>();
             nameLabel.text = "Null";
             descriptionLabel.text = "Null";
+            renderedModel = null;
         }
-    }
-
-    public void DisplayModel()
-    {
-        renderedModel = model.RenderModelAt(modelContainer.transform);
     }
 }
