@@ -9,21 +9,28 @@ public class Model : ScriptableObject
     public string modelDescription;
     public List<Ability> modelAbilities;
 
-    public List<GameObject> overlay;
-    public List<GameObject> underlay;
+    public ModelPrefab modelPrefab;
 
     public void RenderModel()
     {
-        foreach (GameObject component in underlay)
-        {
-            Instantiate(component);
-        }
-
-
+        Instantiate(modelPrefab).Slice();
     }
 }
 
-public class Ability : ScriptableObject
+public interface Ability
 {
-    public Animation animation;
+    public void Activate(ModelPrefab modelPrefab);
+    public void Deactivate(ModelPrefab modelPrefab);
+}
+
+public class SliceAbility : Ability
+{
+    public void Activate(ModelPrefab modelPrefab)
+    {
+        modelPrefab.Slice();
+    }
+    public void Deactivate(ModelPrefab modelPrefab)
+    {
+        modelPrefab.Unslice();
+    }
 }
