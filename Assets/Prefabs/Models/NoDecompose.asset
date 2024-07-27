@@ -14,7 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelName: No Decompose
   modelDescription: This object cannot be decomposed
-  modelAbilities:
-  - {fileID: 11400000, guid: 361dfcb948bdeb14495051bbe61dc83c, type: 2}
-  modelPrefab: {fileID: 8287091063378826857, guid: 0ea1179c661fe554aba15315c59dd75e, type: 3}
-  instantiatedPrefab: {fileID: 0}
+  modelTemplate: {fileID: 8287091063378826857, guid: 0ea1179c661fe554aba15315c59dd75e, type: 3}
